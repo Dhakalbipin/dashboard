@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Website Title</title>
+  <!-- Include any other necessary stylesheets or scripts -->
+</head>
+
+<body>
+  <!-- Your existing HTML content -->
+
+  <div id="usernameDisplay"></div>
+  <button onclick="displayUserData()">Display User Data</button>
+
+  <!-- Include your other HTML elements -->
+
+  <!-- Include the following script at the end of your body -->
+  <script>
+    // Function to retrieve data from the local storage of a different domain
+    function retrieveDataFromLocalStorage(targetDomain) {
+      // ... (Same as before)
+    }
+
+    // Function to display retrieved user data
+    function displayUserData() {
+      // Retrieve user data from local storage of a different domain
+      retrieveDataFromLocalStorage('http://localhost:5502');
+    }
+
+    // Function to display retrieved user data on page load
+    document.addEventListener("DOMContentLoaded", function () {
+      retrieveDataFromLocalStorage('http://localhost:5502');
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+
+    <!-- Montserrat Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    
+    
+    <!-- Custom CSS (Your existing styles) -->
+    <link rel="stylesheet" href="/responsive-admin-dashboard/css/styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div class="grid-container">
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+          <span class="material-icons-outlined">search</span>
+        </div>
+        <div class="header-right">
+          <span class="material-icons-outlined">account_circle</span>
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="material-icons-outlined">inventory</span> Book Borrow
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()"
+            >close</span
+          >
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+            <a href="../index.html" target="_blank">
+              <span class="material-icons-outlined">dashboard</span> Dashboard
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="addbook.html">
+              <span class="material-icons-outlined">library_books</span>Books
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="rent.html">
+              <span class="material-icons-outlined">add_shopping_cart</span>
+              Rent Status
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="payment.html">
+              <span class="material-icons-outlined">attach_money</span>
+              Payment
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" onclick="toggleUserForm()">
+              <span class="material-icons-outlined">group_add</span> Users
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#">
+              <span class="material-icons-outlined">settings</span> Settings
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-cards" id="userFormContainer">
+          <div class="container">
+            
+            <h2>User Form</h2>
+            <div class="container mt-8">
+   <div class="container mt-8">
+          <form id="userForm">
+            <div class="row">
+                <div class="col-md-6">
+                              <div class="mb-3">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" required />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="userName" class="form-label">Username</label>
+                                        <input type="text" class="form-control" id="userName" name="userName" required />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password" required />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" required />
+                                    </div>
+                                </div>
+                                  <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">Phone</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" required />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address" class="form-label">Address</label>
+                                        <input type="text" class="form-control" id="address" name="address" required />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="userType" class="form-label">User Type</label>
+                                        <select class="form-select" id="userType" name="userType" required>
+                                            <option value="user" selected>User</option>
+                                            <option value="admin">admin</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col">
+                                    <button type="button" class="btn btn-primary" id="signupSubmitBtn">Add User</button>
+                                </div>
+                            </div>
+                        </form>
+                        <table class="table mt-4">
+                            <thead>
+                                <tr>
+                                    <th>S.N</th>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>Amount</th>
+                                    <th>UserType</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="userTableBody">
+                                <!-- User data will be dynamically added here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Modal -->
+<div class="modal fade" id="edit" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="editUserForm">
+                  <div class="row">
+                    <input type="hidden" id="editId" value="">
+                      <div class="col-md-6">
+                          <div class="mb-3">
+                              <label for="editName" class="form-label">Name</label>
+                              <input type="text" class="form-control" id="editName" name="editName" required />
+                          </div>
+                          <div class="mb-3">
+                              <label for="editUserName" class="form-label">Username</label>
+                              <input type="text" class="form-control" id="editUserName" name="editUserName" required />
+                          </div>
+                          <div class="mb-3">
+                              <label for="editPassword" class="form-label">Password</label>
+                              <input type="password" class="form-control" id="editPassword" name="editPassword" required />
+                          </div>
+                          <div class="mb-3">
+                              <label for="editEmail" class="form-label">Email</label>
+                              <input type="email" class="form-control" id="editEmail" name="editEmail" required />
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="mb-3">
+                              <label for="editPhone" class="form-label">Phone</label>
+                              <input type="tel" class="form-control" id="editPhone" name="editPhone" required />
+                          </div>
+                          <div class="mb-3">
+                              <label for="editAddress" class="form-label">Address</label>
+                              <input type="text" class="form-control" id="editAddress" name="editAddress" required />
+                          </div>
+                          <div class="mb-3">
+                              <label for="editUserType" class="form-label">User Type</label>
+                              <select class="form-select" id="editUserType" name="editUserType" required>
+                                  <option value="user" selected>User</option>
+                                  <option value="admin">Admin</option>
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveChangesBtn">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- model for the delete -->
+<!-- Your button and modal HTML -->
+
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="deleteModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLongTitle">Delete Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this item?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger" id="deleteYesBtn">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </main>
+        <!-- End Main -->
+    </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- End Main -->
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Custom JS -->
+<script src ="/responsive-admin-dashboard/JS/user.js"></script>
+
+<!-- <script>
+function displayData(users) {
+  var tableBody = document.getElementById("userTableBody");
+  tableBody.innerHTML = "";
+  let i = 1;
+
+  users.forEach(function (user) {
+    var row = tableBody.insertRow();
+    row.insertCell().innerHTML = i;
+    i += 1;
+    row.insertCell().innerHTML = user.name;
+    row.insertCell().innerHTML = user.userName;
+    row.insertCell().innerHTML = user.email;
+    row.insertCell().innerHTML = user.phone;
+    row.insertCell().innerHTML = user.address;
+    row.insertCell().innerHTML = user.amount;
+    row.insertCell().innerHTML = user.userType;
+
+    var editCell = row.insertCell();
+    var editButton = document.createElement("button");
+    editButton.className = "btn btn-link edit-btn";
+    editButton.innerHTML = '<i class="fa fa-pencil"></i>';
+    editButton.setAttribute("data-toggle", "modal");
+    editButton.addEventListener("click", function () {
+      openEditModal(user._id);
+    });
+    editCell.appendChild(editButton);
+
+    var deleteCell = row.insertCell();
+    var deleteButton = document.createElement("button");
+    deleteButton.className = "btn btn-link delete-btn";
+    deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
+    deleteButton.setAttribute("data-toggle", "modal");
+    deleteButton.addEventListener("click", function () {
+      openDeleteModal(user._id);
+    });
+    deleteCell.appendChild(deleteButton);
+  });
+}
+
+
+
+</script> -->
+
+  </body>
+</html>

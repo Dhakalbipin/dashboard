@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+
+    <!-- Montserrat Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="grid-container">
+      <!-- Header -->
+<header class="header">
+  <div class="menu-icon" onclick="openSidebar()">
+    <span class="material-icons-outlined">menu</span>
+  </div>
+
+  <div class="header-left">
+    <span class="material-icons-outlined">search</span>
+  </div>
+
+  <div class="header-left">
+    <div class="user-dropdown header-left" onclick="toggleDropdown()">
+<span class="material-icons-outlined">person</span>        
+<div class="dropdown-content dropdown-menu-right custom-dropdown" id="userDropdown">
+            <a href="./HTM/profile.html" onclick="editProfile()">Profile</a>
+            <a href="http://localhost:5501/firstindex.html" onclick="logout()">Logout</a>
+        </div>
+    </div>
+</div>
+
+</header>
+        <script>
+          function toggleDropdown() {
+            var dropdown = document.getElementById("userDropdown");
+            dropdown.style.display =
+              dropdown.style.display === "block" ? "none" : "block";
+          }
+          function editProfile() {
+            // Implement your edit profile logic here
+            alert("DO you wnat to see Your Profile?");
+          }
+          function logout() {
+            // Implement your logout logic here
+            alert("Logout");
+          }
+        </script>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="material-icons-outlined">inventory</span> Book Borrow
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()"
+            >close</span
+          >
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+            <a href="#">
+              <span class="material-icons-outlined">dashboard</span> Dashboard
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="HTM/addbook.html">
+              <span class="material-icons-outlined"> library_books </span>Books
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">add_shopping_cart</span>
+              Rent Status
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined"> attach_money </span>
+              Payment
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="./HTM/adduser.html">
+              <span class="material-icons-outlined"> group_add </span> Users
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">settings</span> Settings
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+          <p class="font-weight-bold">DASHBOARD</p>
+        </div>
+        <div class="main-cards">
+          <div class="card" id="list-of-books">
+            <div class="card-inner">
+            <p class="text-primary">Books</p>
+              <span class="material-icons-outlined text-red">
+                library_books
+              </span>
+              <div>
+                <span class="text-primary font-weight-bold" id="list-of-books"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">Renting Status</p>
+              <span class="material-icons-outlined text-orange"
+                >add_shopping_cart</span
+              >
+            </div>
+            <span class="text-primary font-weight-bold">10</span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">payment</p>
+              <span class="material-icons-outlined text-green">
+                attach_money</span
+              >
+            </div>
+            <span class="text-primary font-weight-bold">1000NRs.</span>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <p class="text-primary">Notifiactio</p>
+              <span class="material-icons-outlined text-red"
+                >notification_important</span
+              >
+            </div>
+            <span class="text-primary font-weight-bold">56</span>
+          </div>
+        </div>
+
+        <div class="charts">
+          <div class="charts-card">
+            <p class="chart-title">Top 5 Products</p>
+            <div id="bar-chart"></div>
+          </div>
+
+          <div class="charts-card">
+            <p class="chart-title">Purchase and Sales Orders</p>
+            <div id="area-chart"></div>
+          </div>
+        </div>
+      </main>
+      <!-- End Main -->
+    </div>
+    
+<!-- <script>
+function fetchDataAndDisplayCount() {
+  fetch("http://localhost:3000/api/book")
+    .then((response) => response.json())
+    .then((data) => {
+      const count = data.length; // Assuming the data is an array
+      console.log("Count from the database:", count);
+
+      // Display the count on an element with the ID "list-of-books"
+      const listOfBooksElement = document.getElementById("list-of-books");
+      if (listOfBooksElement) {
+        listOfBooksElement.textContent = `${count}`;
+        <span class="material-icons-outlined text-red">
+                library_books
+              </span>
+      }
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+}
+
+// Call the fetchDataAndDisplayCount function
+fetchDataAndDisplayCount();
+
+
+</script> -->
+    <!-- Scripts -->
+    <!-- ApexCharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
