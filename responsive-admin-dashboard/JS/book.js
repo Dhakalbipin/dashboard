@@ -75,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
         openEditModal(book._id);
       });
       editCell.appendChild(editButton);
-
       var deleteCell = row.insertCell();
       var deleteButton = document.createElement("button");
       console.log({ deleteButton });
@@ -112,15 +111,15 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("editBookName").value = book.bookName;
       document.getElementById("editAuthor").value = book.author;
       document.getElementById("editGenre").value = book.genre;
-      // document.getElementById("edituUserId").value = user.userId;
+      document.getElementById("editUserId").value = "65be3ed225c9f50bb6d60eec";
       document.getElementById("editDescription").value = book.description;
       document.getElementById("editStock").value = book.stock;
-      document.getElementById("editPhoto").value = book.photo;
+      // document.getElementById("editPhoto").value = book.photo;
       document.getElementById("editBookValue").value = book.bookValue;
       document.getElementById("editVendorName").value = book.vendorName;
       document.getElementById("editRating").value = book.rating;
-
       var editModal = new bootstrap.Modal(document.getElementById("edit"));
+      console.log("test");
       editModal.show();
     });
   }
@@ -134,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
       description: document.getElementById("editDescription").value,
       stock: document.getElementById("editStock").value,
       // aStock: document.getElementById("editAStock").value,
-      photo: document.getElementById("editPhoto").value,
+      // photo: document.getElementById("editPhoto").value,
       bookName: document.getElementById("editBookValue").value,
       venderName: document.getElementById("editVendorName").value,
       rating: document.getElementById("editRating").value,

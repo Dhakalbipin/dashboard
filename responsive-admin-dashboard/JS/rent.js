@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
       row.insertCell().innerHTML = order.deadline;
       row.insertCell().innerHTML = order.address;
       row.insertCell().innerHTML = order.returnStatus;
-      row.insertCell().innerHTML = order.ReminderEmail;
+      row.insertCell().innerHTML = order.Price;
       // var editCell = row.insertCell();
       // // // var editButton = document.createElement("button");
       // // // editButton.className = "btn btn-link edit-btn";
